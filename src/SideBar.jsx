@@ -1,48 +1,52 @@
 import React from 'react';
 import { Card, Typography, List, ListItem, ListItemPrefix, Chip } from "@material-tailwind/react";
-import { PresentationChartBarIcon, UserCircleIcon, Cog6ToothIcon, PowerIcon, CalendarDaysIcon } from "@heroicons/react/24/solid";
+import {  ChevronDoubleRightIcon, CalendarDaysIcon, ListBulletIcon,ArrowRightStartOnRectangleIcon, ShieldCheckIcon} from "@heroicons/react/24/solid";
+import { Link } from "react-router-dom";
+import logo from "./assets/T.png"
 
 export default function DefaultSidebar() {
   return (
     <Card className="h-[calc(110vh-2rem)] w-full max-w-[15rem] p-10 shadow-xl shadow-blue-gray-900/10">
-      <div className="mb-2 p-4 text-2xl">
+      <div className="mb-5 p-1 text-xl">
         <Typography variant="h1" color="blue-gray">
-          T-Tasks
+          <img src={logo} alt="Logo" className='h-[80px] mx-7' />
         </Typography>
       </div>
-      <List className="flex space-y-60 py-6">
-        <div className='flex flex-col gap-8'>
-        <ListItem className="flex items-center">
+      <List className="space-y-[300px]">
+        <div className='flex flex-col py-5'>
+          <ListItem>
             <ListItemPrefix>
-              <UserCircleIcon className="h-5 w-5" />
+              <ChevronDoubleRightIcon className="h-5 w-5 mx-3" />
             </ListItemPrefix>
-            Profile
-          </ListItem>
-          <ListItem className="flex items-center">
-            <ListItemPrefix>
-              <PresentationChartBarIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            Dashboard
+            <Link to="/">Upcoming</Link>
           </ListItem>
 
-
-          <ListItem className="flex items-center">
+          <ListItem>
             <ListItemPrefix>
-              <CalendarDaysIcon className="h-5 w-5" />
+              <ListBulletIcon className="h-5 w-5 mx-3" />
             </ListItemPrefix>
-            My Tasks
+            <Link to="Today">Today</Link>
           </ListItem>
-          <ListItem className="flex items-center">
+      
+          <ListItem>
             <ListItemPrefix>
-              <Cog6ToothIcon className="h-5 w-5" />
+              <CalendarDaysIcon className="h-5 w-5 mx-3" />
             </ListItemPrefix>
-            Settings
+            <Link to="Calendar">Calendar</Link>
+          </ListItem>
+
+          <ListItem>
+            <ListItemPrefix>
+              <ShieldCheckIcon className="h-5 w-5 mx-3" />
+            </ListItemPrefix>
+            <Link to="StickWall">StickWall</Link>
           </ListItem>
         </div>
-        <div className=''>
-          <ListItem className="flex items-center">
+
+        <div>
+          <ListItem>
             <ListItemPrefix>
-              <PowerIcon className="h-5 w-5" />
+              <ArrowRightStartOnRectangleIcon className="h-5 w-5 mx-3" />
             </ListItemPrefix>
             Log Out
           </ListItem>

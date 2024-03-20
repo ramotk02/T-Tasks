@@ -1,22 +1,31 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SideBar from "./SideBar";
-import CalendarStyle from "./components/CalendarStyle";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Upcoming from "./components/pages/Upcoming";
+import Today from "./components/pages/Today";
+import StickyWall from "./components/pages/StickyWall";
+import Calendar from "./components/pages/Calendar";
+import NoPage from "./components/pages/NoPage"; 
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <section className="flex">
         <SideBar />
-        <Switch>
-          <Route path="/calendar">
-            <CalendarStyle />
-          </Route>
-          
-        </Switch>
+        <Routes>
+          <Route path="/" element={<Upcoming />} />
+          <Route path="StickWall" element={<StickyWall />} />
+          <Route path="Today" element={<Today />} />
+          <Route path="Calendar" element={<Calendar />} />
+          <Route path="*" element={<NoPage />} />
+        </Routes>
       </section>
-    </Router>
+    </BrowserRouter>
   );
 }
+
+const root = document.getElementById('root');
+ReactDOM.render(<App />, root);
 
 export default App;
