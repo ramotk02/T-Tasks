@@ -1,14 +1,22 @@
-import { Calendar } from "./components/ui/calendar"
-import SideBr from "./SideBar"
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import SideBar from "./SideBar";
+import CalendarStyle from "./components/CalendarStyle";
 
 function App() {
-
   return (
-    <section className="flex">
-      <SideBr/>
-      <div className="flex w-[100%] justify-end m-10 "><Calendar/></div>
-    </section>
-  )
+    <Router>
+      <section className="flex">
+        <SideBar />
+        <Switch>
+          <Route path="/calendar">
+            <CalendarStyle />
+          </Route>
+          
+        </Switch>
+      </section>
+    </Router>
+  );
 }
 
 export default App;

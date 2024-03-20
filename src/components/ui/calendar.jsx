@@ -5,7 +5,7 @@ import { format } from "date-fns";
 import { useState } from "react";
 
 import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "./button";
 
 function Calendar({
   className,
@@ -13,7 +13,7 @@ function Calendar({
   showOutsideDays = true,
   ...props
 }) {
-  const [selected, setSelected] = useState();
+  const [selected, setSelected] = useState<Date | null>(null);
 
   let footer = <p>Please pick a day.</p>;
   if (selected) {
@@ -69,23 +69,4 @@ function Calendar({
 
 Calendar.displayName = "Calendar";
 
-export { Calendar };
-
-// Example function added here
-export default function Example() {
-  const [selected, setSelected] = useState();
-
-  let footer = <p>Please pick a day.</p>;
-  if (selected) {
-    footer = <p>You picked {format(selected, 'PP')}.</p>;
-  }
-
-  return (
-    <DayPicker
-      mode="single"
-      selected={selected}
-      onSelect={setSelected}
-      footer={footer}
-    />
-  );
-}
+export { Calendar }; 
