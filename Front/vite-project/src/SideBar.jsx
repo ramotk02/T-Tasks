@@ -16,28 +16,28 @@ export default function DefaultSidebar() {
         <div className='flex flex-col py-5'>
           <ListItem>
             <ListItemPrefix>
-              <ChevronDoubleRightIcon className="h-5 w-5 mx-3" />
+              <ChevronDoubleRightIcon className="h-5 w-5 mx-3" title="Upcoming" />
             </ListItemPrefix>
             <Link to="/">Upcoming</Link>
           </ListItem>
 
           <ListItem>
             <ListItemPrefix>
-              <ListBulletIcon className="h-5 w-5 mx-3" />
+              <ListBulletIcon className="h-5 w-5 mx-3" title="Today" />
             </ListItemPrefix>
             <Link to="Today">Today</Link>
           </ListItem>
       
           <ListItem>
             <ListItemPrefix>
-              <CalendarDaysIcon className="h-5 w-5 mx-3" />
+              <CalendarDaysIcon className="h-5 w-5 mx-3" title="Calendar" />
             </ListItemPrefix>
             <Link to="Calendar">Calendar</Link>
           </ListItem>
 
           <ListItem>
             <ListItemPrefix>
-              <ShieldCheckIcon className="h-5 w-5 mx-3" />
+              <ShieldCheckIcon className="h-5 w-5 mx-3" title="StickWall" />
             </ListItemPrefix>
             <Link to="StickWall">StickWall</Link>
           </ListItem>
@@ -46,7 +46,7 @@ export default function DefaultSidebar() {
         <div>
           <ListItem>
             <ListItemPrefix>
-              <ArrowRightStartOnRectangleIcon className="h-5 w-5 mx-3" />
+              <ArrowRightStartOnRectangleIcon className="h-5 w-5 mx-3" title="Log Out" />
             </ListItemPrefix>
             Log Out
           </ListItem>
