@@ -1,7 +1,8 @@
+// App.js
 import React from "react";
-import SideBar from "./SideBar";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SideBar from "./SideBar";
 import Upcoming from "./components/pages/Upcoming";
 import Today from "./components/pages/Today";
 import StickyWall from "./components/pages/StickyWall";
@@ -15,9 +16,9 @@ function App() {
         <SideBar />
         <Routes>
           <Route path="/" element={<Upcoming />} />
-          <Route path="StickWall" element={<StickyWall />} />
-          <Route path="Today" element={<Today />} />
-          <Route path="Calendar" element={<Calendar />} />
+          <Route path="/StickyWall" element={<StickyWall />} />
+          <Route path="/Today" element={<Today />} />
+          <Route path="/Calendar" element={<Calendar />} />
           <Route path="*" element={<NoPage />} />
         </Routes>
       </section>
@@ -26,6 +27,6 @@ function App() {
 }
 
 const root = document.getElementById('root');
-ReactDOM.render(<App />, root);
+ReactDOM.createRoot(root).render(<App />);
 
 export default App;

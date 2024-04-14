@@ -1,3 +1,4 @@
+// Today.jsx
 import React, { useState, useEffect } from "react";
 import TasksCase from "../TasksCase";
 import TasksCreator from "../TasksCreator";
@@ -12,7 +13,7 @@ const Today = () => {
   const fetchTasks = async () => {
     try {
       const response = await axios.get("http://localhost:3002/api/tasks");
-      setTasks(response.data.tasks); 
+      setTasks(response.data); 
     } catch (error) {
       console.error("Error fetching tasks:", error);
     }
@@ -47,7 +48,7 @@ const Today = () => {
         </div>
       </section>
       {showCreateTask && (
-        <TasksCreator onClose={handleClose} fetchTasks={fetchTasks} tasks={tasks} />
+        <TasksCreator onClose={handleClose} fetchTasks={fetchTasks} />
       )}
     </section>
   );
