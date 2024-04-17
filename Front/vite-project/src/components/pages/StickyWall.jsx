@@ -68,79 +68,80 @@ const StickyWall = () => {
             onMouseUp={() => handleMouseUp(note.id)}
           >
             <span className="close" onClick={() => deleteNote(note.id)}>x</span>
-            <textarea placeholder="Write Content..." rows="10" cols="30"></textarea>
+            <textarea placeholder="Write Content..." rows="10" cols="30" style={{ color: note.color !== '#000000' ? '#000000' : '#d6d6d6' }}></textarea>
           </div>
         ))}
       </div>
       <style>
         {`
-          body{
-              margin: 0;
-              font-family: Poppins;
+          body {
+            margin: 0;
+            font-family: Poppins;
           }
-          main{
-              width: 100vw;
-              height: 100vh;
-              overflow: hidden;
-              background-image: 
+          main {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background-image: 
               repeating-linear-gradient(
-                  to right,
-                  transparent 0 50px, 
-                  #fff1 50px 51px
+                to right,
+                transparent 0 50px, 
+                #fff1 50px 51px
               ),
               repeating-linear-gradient(
-                  to bottom,
-                  transparent 0 50px, 
-                  #fff1 50px 51px
+                to bottom,
+                transparent 0 50px, 
+                #fff1 50px 51px
               );
-              position: relative;
+            position: relative;
           }
-          form{
-              background-color: #eee;
-              width: max-content;
-              padding: 5px;
-              margin: 10px;
-              border-radius: 24px;
-              display: flex;
-              gap: 10px;
+          form {
+            background-color: #eee;
+            width: max-content;
+            padding: 5px;
+            margin: 10px;
+            border-radius: 24px;
+            display: flex;
+            gap: 10px;
           }
-          form input, button{
-              width: 30px;
-              height: 30px;
-              padding: 0;
-              border: none;
-              background-color: transparent;
-              font-size: large;
-              cursor: pointer;
+          form input, button {
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            border: none;
+            background-color: transparent;
+            font-size: large;
+            cursor: pointer;
           }
-          form input::-webkit-color-swatch-wrapper{
-              padding: 0;
+          form input::-webkit-color-swatch-wrapper {
+            padding: 0;
           }
-          form input::-webkit-color-swatch{
-              border-radius: 50%;
+          form input::-webkit-color-swatch {
+            border-radius: 50%;
           }
-          #list textarea{
-              all: unset;
-              color: #d6d6d6;
+          #list textarea {
+            all: unset;
+            color: #d6d6d6; /* Couleur du texte gris */
           }
-          #list .note{
-              background-color: #333;
-              width: max-content;
-              border-top: 30px solid #e6b905;
-              border-radius: 10px;
-              box-shadow: 0 20px 50px #0004;
-              padding: 10px;
-              position: absolute;
+          #list .note {
+            background-color: #e6b905; /* Couleur de fond jaune */
+            width: max-content;
+            border-top: 30px solid #e6b905;
+            border-radius: 10px;
+            box-shadow: 0 20px 50px #0004;
+            padding: 10px;
+            position: absolute;
           }
-          #list .note span{
-              position: absolute;
-              bottom: 100%;
-              right: 0;
-              height: 30px;
-              font-family: cursive;
-              font-size: large;
-              padding-right: 10px;
-              cursor: pointer;
+          #list .note span {
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            height: 30px;
+            font-family: cursive;
+            font-size: large;
+            padding-right: 10px;
+            cursor: pointer;
+            color: #000000; /* Couleur de la croix en noir */
           }
         `}
       </style>
