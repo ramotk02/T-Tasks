@@ -37,9 +37,9 @@ export default function DefaultSidebar() {
 
           <ListItem>
             <ListItemPrefix>
-              <ShieldCheckIcon className="h-5 w-5 mx-3" title="StickWall" />
+              <ShieldCheckIcon className="h-5 w-5 mx-3" title="StickyWall" />
             </ListItemPrefix>
-            <Link to="StickWall">StickWall</Link>
+            <Link to="StickyWall">StickWall</Link>
           </ListItem>
         </div>
 
