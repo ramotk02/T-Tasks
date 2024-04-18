@@ -1,4 +1,3 @@
-// Today.jsx
 import React, { useState, useEffect } from "react";
 import TasksCase from "../TasksCase";
 import TasksCreator from "../TasksCreator";
@@ -35,6 +34,11 @@ const Today = () => {
 
   return (
     <section className="w-full mx-8 flex justify-between">
+      <style>
+        {`
+          @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+        `}
+      </style>
       <section className={taskSectionWidth}>
         <h2 className="text-7xl my-10">Today</h2> {/* title */}
         <div id="Today" className="h-auto w-full"> {/* Today */}
