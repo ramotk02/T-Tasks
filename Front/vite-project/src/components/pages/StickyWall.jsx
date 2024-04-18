@@ -3,13 +3,17 @@ import React, { useState } from 'react';
 const StickyWall = () => {
   const [color, setColor] = useState('#e6b905');
   const [notes, setNotes] = useState([]);
+  const [selectedNote, setSelectedNote] = useState(null);
+  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
 
   const createNote = () => {
     const newNote = {
       id: Date.now(),
       color: color,
       left: 50,
-      top: 60
+      top: 60,
+      width: 200,
+      height: 200
     };
     setNotes([...notes, newNote]);
   };
@@ -18,57 +22,81 @@ const StickyWall = () => {
     setNotes(notes.filter(note => note.id !== id));
   };
 
-  const handleMouseDown = (event, id) => {
+  const bringToFront = (id) => {
     const index = notes.findIndex(note => note.id === id);
-    const { clientX, clientY } = event;
     const newNotes = [...notes];
-    newNotes[index].cursor = { x: clientX, y: clientY };
+    const [selectedNote] = newNotes.splice(index, 1);
+    newNotes.push(selectedNote);
     setNotes(newNotes);
   };
 
-  const handleMouseMove = (event, id) => {
+  const handleMouseDown = (event, id) => {
+    event.stopPropagation();
+    setSelectedNote(id);
+    bringToFront(id); // Mettre le sticker sélectionné en premier plan
+    const { clientX, clientY } = event;
     const index = notes.findIndex(note => note.id === id);
-    if (notes[index].cursor) {
+    const offsetX = clientX - notes[index].left;
+    const offsetY = clientY - notes[index].top;
+    setDragOffset({ x: offsetX, y: offsetY });
+  };
+
+  const handleMouseMove = (event) => {
+    if (selectedNote) {
       const { clientX, clientY } = event;
-      const deltaX = clientX - notes[index].cursor.x;
-      const deltaY = clientY - notes[index].cursor.y;
-      const newNotes = [...notes];
-      newNotes[index].left += deltaX;
-      newNotes[index].top += deltaY;
-      newNotes[index].cursor = { x: clientX, y: clientY };
+      const newNotes = notes.map(note => {
+        if (note.id === selectedNote) {
+          return {
+            ...note,
+            left: clientX - dragOffset.x,
+            top: clientY - dragOffset.y
+          };
+        }
+        return note;
+      });
       setNotes(newNotes);
     }
   };
 
-  const handleMouseUp = (id) => {
-    const index = notes.findIndex(note => note.id === id);
-    const newNotes = [...notes];
-    delete newNotes[index].cursor;
-    setNotes(newNotes);
+  const handleMouseUp = () => {
+    setSelectedNote(null);
   };
 
   return (
-    <main className="max-w-lg mx-auto mt-8 p-4 bg-white rounded shadow-lg">
+    <main
+      className="p-4 bg-white rounded shadow-lg"
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+    >
       <form className="flex items-center">
         <input type="color" value={color} onChange={(e) => setColor(e.target.value)} />
         <button type="button" onClick={createNote}>+</button>
       </form>
-      <div id="list" className="mt-4">
+      <div id="list" className="mt-2">
         {notes.map(note => (
           <div
             key={note.id}
             className="note"
             style={{
-              backgroundColor: note.color,
+              width: note.width + 'px',
+              height: note.height + 'px',
               left: note.left + 'px',
-              top: note.top + 'px'
+              top: note.top + 'px',
+              zIndex: note.id === selectedNote ? 1 : 0
             }}
             onMouseDown={(e) => handleMouseDown(e, note.id)}
-            onMouseMove={(e) => handleMouseMove(e, note.id)}
-            onMouseUp={() => handleMouseUp(note.id)}
           >
-            <span className="close" onClick={() => deleteNote(note.id)}>x</span>
-            <textarea placeholder="Write Content..." rows="10" cols="30" style={{ color: note.color !== '#000000' ? '#000000' : '#d6d6d6' }}></textarea>
+            <div className="note-top" style={{ backgroundColor: note.color }}>
+              <span className="close" onClick={() => deleteNote(note.id)}>x</span>
+            </div>
+            <div className="note-bottom">
+              <textarea
+                placeholder="Write Content..."
+                rows="10"
+                cols="30"
+                className="note-textarea"
+              ></textarea>
+            </div>
           </div>
         ))}
       </div>
@@ -119,29 +147,42 @@ const StickyWall = () => {
           form input::-webkit-color-swatch {
             border-radius: 50%;
           }
-          #list textarea {
+          .note-textarea {
             all: unset;
-            color: #d6d6d6; /* Couleur du texte gris */
+            color: #000; /* Couleur du texte */
+            background-color: #fff; /* Couleur de fond */
+            border: none; /* Supprimer la bordure */
+            width: 100%;
+            height: 100%;
+            resize: none;
+            padding: 10px;
           }
-          #list .note {
-            background-color: #e6b905; /* Couleur de fond jaune */
-            width: max-content;
-            border-top: 30px solid #e6b905;
+          .note {
             border-radius: 10px;
             box-shadow: 0 20px 50px #0004;
-            padding: 10px;
+            padding: 0;
             position: absolute;
+            overflow: hidden;
           }
-          #list .note span {
-            position: absolute;
-            bottom: 100%;
-            right: 0;
+          .note-top {
             height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+          }
+          .note-bottom {
+            height: calc(100% - 30px);
+            background-color: #fff;
+          }
+          .note span {
             font-family: cursive;
             font-size: large;
-            padding-right: 10px;
             cursor: pointer;
-            color: #000000; /* Couleur de la croix en noir */
+            color: #000;
           }
         `}
       </style>
