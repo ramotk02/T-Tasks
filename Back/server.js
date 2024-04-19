@@ -1,15 +1,14 @@
-
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require("cors"); 
-const Task = require("./Models/Tasks");
+const cors = require("cors");
+const Note = require("./Models/Note"); // Importez votre modèle de Note
 require("dotenv").config();
 
 const app = express();
 const port = 3002;
 
 app.use(express.json());
-app.use(cors()); 
+app.use(cors());
 
 mongoose
   .connect(
@@ -24,25 +23,38 @@ mongoose
   })
   .catch((err) => console.error("MongoDB connection error:", err));
 
-app.get("/api/tasks", async (req, res) => {
+app.get("/api/notes", async (req, res) => {
   try {
-    const tasks = await Task.find();
-    res.status(200).json(tasks); 
+    const notes = await Note.find();
+    res.status(200).json(notes);
   } catch (error) {
-    console.error("Error fetching tasks:", error);
+    console.error("Error fetching notes:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
 
-app.post("/api/tasks", (req, res) => {
-  const newTask = req.body;
-  Task.create(newTask)
-    .then((task) => {
-      console.log("Task created:", task);
-      res.status(201).json(task);
+app.post("/api/notes", (req, res) => {
+  const newNote = req.body;
+  Note.create(newNote)
+    .then((note) => {
+      console.log("Note created:", note);
+      res.status(201).json(note);
     })
     .catch((error) => {
-      console.error("Error creating task:", error);
+      console.error("Error creating note:", error);
+      res.status(500).json({ error: "Internal server error" });
+    });
+});
+
+app.delete("/api/notes/:id", (req, res) => {
+  const noteId = req.params.id;
+  Note.findByIdAndDelete(noteId)
+    .then(() => {
+      console.log("Note deleted:", noteId);
+      res.status(200).json({ message: "Note deleted successfully" });
+    })
+    .catch((error) => {
+      console.error("Error deleting note:", error);
       res.status(500).json({ error: "Internal server error" });
     });
 });
