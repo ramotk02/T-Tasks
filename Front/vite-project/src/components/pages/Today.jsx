@@ -44,7 +44,7 @@ const Today = () => {
   const deleteTask = async (taskId) => {
     try {
       await axios.delete(`http://localhost:3002/api/tasks/${taskId}`);
-      setTasks(tasks.filter(task => task._id !== taskId));
+      fetchTasks();
     } catch (error) {
       console.error("Error deleting task:", error);
     }
@@ -65,7 +65,7 @@ const Today = () => {
             Add New Task
           </button>
           <div className="m-4">
-            <TasksCase tasks={tasks} deleteTask={deleteTask} toggleTaskCompletion={toggleTaskCompletion} /> {/* Assurez-vous que toggleTaskCompletion est passé ici */}
+            <TasksCase tasks={tasks} deleteTask={deleteTask} toggleTaskCompletion={toggleTaskCompletion} />
           </div>
         </div>
       </section>
