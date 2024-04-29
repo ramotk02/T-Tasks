@@ -15,10 +15,10 @@ function App() {
       <section className="flex">
         <SideBar />
         <Routes>
-          <Route path="/" element={<Upcoming />} />
+          <Route path="/Upcoming" element={<Upcoming />} />
           <Route path="/StickyWall" element={<StickyWall />} />
           <Route path="/Today" element={<Today />} />
-          <Route path="/Calendar" element={<Calendar />} />
+          <Route path="/" element={<Calendar />} />
           <Route path="*" element={<NoPage />} />
         </Routes>
       </section>

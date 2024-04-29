@@ -25,14 +25,14 @@ export default function DefaultSidebar() {
             <ListItemPrefix>
               <CalendarIcon className="h-5 w-5 mx-3" title="Calendar" />
             </ListItemPrefix>
-            <Link to="Calendar" style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '16px' }}>Calendar</Link>
+            <Link to="/" style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '16px' }}>Calendar</Link>
           </ListItem>
 
           <ListItem>
             <ListItemPrefix>
               <ChevronDoubleRightIcon className="h-5 w-5 mx-3" title="Upcoming" />
             </ListItemPrefix>
-            <Link to="/" style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '16px' }}>Upcoming</Link>
+            <Link to="Upcoming" style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '16px' }}>Upcoming</Link>
           </ListItem>
 
           <ListItem>
