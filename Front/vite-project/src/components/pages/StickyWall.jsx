@@ -228,7 +228,7 @@
           `}
         </style>
         <main
-          className="p-4 bg-white rounded shadow-lg"
+          className="p-4 bg-white rounded shadow-lg h-[805px]"
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
         >
