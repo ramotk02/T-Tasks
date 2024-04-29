@@ -11,18 +11,6 @@ const StickyWall = () => {
     fetchNotes();
   }, []);
 
-  useEffect(() => {
-    const updateNotes = async () => {
-      try {
-        await axios.post('http://localhost:3002/api/notes/update', notes);
-      } catch (error) {
-        console.error('Error updating notes:', error);
-      }
-    };
-
-    updateNotes();
-  }, [notes]);
-
   const fetchNotes = async () => {
     try {
       const response = await axios.get('http://localhost:3002/api/notes');
@@ -121,15 +109,20 @@ const StickyWall = () => {
     setSelectedNote(null);
   };
 
-  const handleNoteContentChange = (e, noteId) => {
+  const handleNoteContentChange = async (e, noteId) => {
     const newContent = e.target.value;
-    const newNotes = notes.map(existingNote => {
-      if (existingNote._id === noteId) {
-        return { ...existingNote, content: newContent };
-      }
-      return existingNote;
-    });
-    setNotes(newNotes);
+    try {
+      await axios.put(`http://localhost:3002/api/notes/${noteId}`, { content: newContent });
+      const newNotes = notes.map(existingNote => {
+        if (existingNote._id === noteId) {
+          return { ...existingNote, content: newContent };
+        }
+        return existingNote;
+      });
+      setNotes(newNotes);
+    } catch (error) {
+      console.error('Error updating note:', error);
+    }
   };
 
   return (
