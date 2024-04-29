@@ -58,7 +58,7 @@ const Today = () => {
         `}
       </style>
       <section className={taskSectionWidth}>
-        <h2 className="text-7xl my-10">Today</h2>
+        <h2 className="text-7xl my-10">Tasks</h2>
         <div id="Today" className="h-auto w-full">
           <button onClick={toggleCreateTask} className="text-black py-2 px-4 rounded w-full flex justify-start border border-gray-300 hover:bg-gray-200">
             <PlusCircleIcon className="h-5 w-5 mx-3 font-bold" /> 

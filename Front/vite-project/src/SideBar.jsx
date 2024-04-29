@@ -30,7 +30,7 @@ export default function DefaultSidebar() {
             <ListItemPrefix>
               <MenuIcon className="h-5 w-5 mx-3" title="Today" />
             </ListItemPrefix>
-            <Link to="Today" style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '16px' }}>Today</Link>
+            <Link to="Today" style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '16px' }}>Tasks</Link>
           </ListItem>
       
           <ListItem>

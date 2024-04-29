@@ -7,7 +7,7 @@ const TasksCase = ({ tasks, deleteTask, toggleTaskCompletion }) => {
 
   const handleToggleCompletion = async (taskId, completed) => {
     try {
-      await toggleTaskCompletion(taskId, completed); // Utilisation correcte de toggleTaskCompletion
+      await toggleTaskCompletion(taskId, completed);
     } catch (error) {
       console.error("Error toggling task completion:", error);
     }
@@ -25,7 +25,7 @@ const TasksCase = ({ tasks, deleteTask, toggleTaskCompletion }) => {
               onChange={() => handleToggleCompletion(task._id, task.completed)}
             />
             <span className={task.completed ? "line-through text-gray-500" : "text-black"}>{task.wyhtd}</span>
-            <button onClick={() => handleDelete(task._id)} className="text-red-600 hover:text-red-800 absolute right-0 top-0">
+            <button onClick={() => handleDelete(task._id)} className="text-gray-500 hover:text-black absolute right-0 top-0">
               X
             </button>
           </label>
