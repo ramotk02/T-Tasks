@@ -26,7 +26,7 @@ const Calendar = () => {
 
     return (
         <section>
-            <div id="clock" onClick={time}>
+            <div id="clock" className="animate-pulse cursor-pointer" onClick={time}>
                 {time}
             </div>
             <h1 className="animate__backInLeft">Welcome, Sir</h1>
@@ -51,7 +51,6 @@ const Calendar = () => {
                     text-align: center;
                     padding-top: 250px;
                     padding-bottom: 40px;
-                    cursor: pointer;
                 }
                 `}
             </style>

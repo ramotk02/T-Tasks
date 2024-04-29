@@ -19,6 +19,15 @@ export default function DefaultSidebar() {
       </div>
       <List className="space-y-[300px]">
         <div className='flex flex-col py-5'>
+
+
+        <ListItem>
+            <ListItemPrefix>
+              <CalendarIcon className="h-5 w-5 mx-3" title="Calendar" />
+            </ListItemPrefix>
+            <Link to="Calendar" style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '16px' }}>Calendar</Link>
+          </ListItem>
+
           <ListItem>
             <ListItemPrefix>
               <ChevronDoubleRightIcon className="h-5 w-5 mx-3" title="Upcoming" />
@@ -33,13 +42,7 @@ export default function DefaultSidebar() {
             <Link to="Today" style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '16px' }}>Tasks</Link>
           </ListItem>
       
-          <ListItem>
-            <ListItemPrefix>
-              <CalendarIcon className="h-5 w-5 mx-3" title="Calendar" />
-            </ListItemPrefix>
-            <Link to="Calendar" style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '16px' }}>Calendar</Link>
-          </ListItem>
-
+         
           <ListItem>
             <ListItemPrefix>
               <ShieldCheckIcon className="h-5 w-5 mx-3" title="StickyWall" />
