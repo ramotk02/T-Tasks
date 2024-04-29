@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Typography, List, ListItem, ListItemPrefix } from "@material-tailwind/react";
-import { ChevronDoubleRightIcon, CalendarDaysIcon, ListBulletIcon, ArrowRightStartOnRectangleIcon, ShieldCheckIcon } from "@heroicons/react/24/solid";
+import { ChevronDoubleRightIcon, CalendarIcon, MenuIcon, ArrowRightIcon, ShieldCheckIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
 import logo from "./assets/T.png";
 
@@ -28,14 +28,14 @@ export default function DefaultSidebar() {
 
           <ListItem>
             <ListItemPrefix>
-              <ListBulletIcon className="h-5 w-5 mx-3" title="Today" />
+              <MenuIcon className="h-5 w-5 mx-3" title="Today" />
             </ListItemPrefix>
             <Link to="Today" style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '16px' }}>Today</Link>
           </ListItem>
       
           <ListItem>
             <ListItemPrefix>
-              <CalendarDaysIcon className="h-5 w-5 mx-3" title="Calendar" />
+              <CalendarIcon className="h-5 w-5 mx-3" title="Calendar" />
             </ListItemPrefix>
             <Link to="Calendar" style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '16px' }}>Calendar</Link>
           </ListItem>
@@ -51,7 +51,7 @@ export default function DefaultSidebar() {
         <div>
           <ListItem>
             <ListItemPrefix>
-              <ArrowRightStartOnRectangleIcon className="h-5 w-5 mx-3" title="Log Out" />
+              <ArrowRightIcon className="h-5 w-5 mx-3" title="Log Out" />
             </ListItemPrefix>
             <Link to="#" style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '16px' }}>Log Out</Link>
           </ListItem>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { PlusCircleIcon } from "@heroicons/react/24/solid";
+import { PlusCircleIcon } from "@heroicons/react/solid";
 import TasksCase from '../TasksCase'; 
 
 const Upcoming = () => {

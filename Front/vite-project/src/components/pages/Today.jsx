@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TasksCase from "../TasksCase";
 import TasksCreator from "../TasksCreator";
-import { PlusCircleIcon } from "@heroicons/react/24/solid";
+import { PlusCircleIcon } from "@heroicons/react/solid";
 import axios from "axios";
 
 const Today = () => {
@@ -26,10 +26,28 @@ const Today = () => {
     setShowCreateTask(!showCreateTask);
     setTaskSectionWidth(showCreateTask ? "w-full" : "w-3/4");
   };
+  
+  const toggleTaskCompletion = async (taskId, completed) => {
+    try {
+      await axios.put(`http://localhost:3002/api/tasks/${taskId}`, { completed: !completed });
+      fetchTasks();
+    } catch (error) {
+      console.error("Error updating task:", error);
+    }
+  };
 
   const handleClose = () => {
     setShowCreateTask(false);
     setTaskSectionWidth("w-full");
+  };
+
+  const deleteTask = async (taskId) => {
+    try {
+      await axios.delete(`http://localhost:3002/api/tasks/${taskId}`);
+      setTasks(tasks.filter(task => task._id !== taskId));
+    } catch (error) {
+      console.error("Error deleting task:", error);
+    }
   };
 
   return (
@@ -40,14 +58,14 @@ const Today = () => {
         `}
       </style>
       <section className={taskSectionWidth}>
-        <h2 className="text-7xl my-10">Today</h2> {/* title */}
-        <div id="Today" className="h-auto w-full"> {/* Today */}
+        <h2 className="text-7xl my-10">Today</h2>
+        <div id="Today" className="h-auto w-full">
           <button onClick={toggleCreateTask} className="text-black py-2 px-4 rounded w-full flex justify-start border border-gray-300 hover:bg-gray-200">
             <PlusCircleIcon className="h-5 w-5 mx-3 font-bold" /> 
             Add New Task
           </button>
           <div className="m-4">
-            <TasksCase tasks={tasks} />
+            <TasksCase tasks={tasks} deleteTask={deleteTask} toggleTaskCompletion={toggleTaskCompletion} /> {/* Assurez-vous que toggleTaskCompletion est passé ici */}
           </div>
         </div>
       </section>
