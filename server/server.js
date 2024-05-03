@@ -6,7 +6,7 @@ const Task= require("./Models/Tasks");
 require("dotenv").config();
 
 const app = express();
-const port = 3002;
+const port = process.env.PORT || 3002;
 
 app.use(express.json());
 app.use(cors());
@@ -23,7 +23,9 @@ mongoose
     });
   })
   .catch((err) => console.error("MongoDB connection error:", err));
-
+app.get("/",async (req,res)=>{
+  res.json("Hello World")
+})
   app.get("/api/tasks", async (req, res) => {
     try {
       const tasks = await Task.find();
