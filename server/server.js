@@ -9,7 +9,13 @@ const app = express();
 const port = process.env.PORT || 3002;
 
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+  {
+    origin: ["https://t-tasks.vercel.app/"],
+    methods: ["GET","POST","PUT","DELETE"],
+    credentials: true,
+  }
+));
 
 mongoose
   .connect(
