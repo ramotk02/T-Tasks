@@ -16,7 +16,7 @@ app.use(cors(
     credentials: true,
   }
 ));
-
+dotenv.config({path: "./env"})
 mongoose
   .connect(
     `mongodb+srv://omartakyot:${process.env.MONGODB_PASSWORD}@cluster0.mxrkn5l.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`,
