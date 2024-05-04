@@ -77,28 +77,17 @@ const Upcoming = () => {
       <h2 className='text-7xl my-10'>Upcoming</h2>
       <div id='Today' className='h-auto w-95 border border-gray-300 rounded-lg mx-6 '>
         <h2 className='text-3xl my-5 mx-4'>Today</h2>
-       
         <div className='m-4'><TasksCase tasks={todayTasks} toggleTaskCompletion={toggleTaskCompletion} deleteTask={deleteTask}/> </div>
       </div>
 
       <section className='flex my-20'>
         <div id='Tomorrow' className='h-auto w-95 border border-gray-300 rounded-lg mx-6 w-[50%]'>
           <h2 className='text-3xl my-5 mx-4'>Tomorrow</h2>
-          <button className="text-black py-2 px-4 rounded w-[90%] flex justify-start border border-gray-300 mx-4 hover:bg-gray-200"
-            onClick={() => addNewTask(new Date(new Date().getTime() + 24 * 60 * 60 * 1000).toISOString().slice(0, 10))}>
-            <PlusCircleIcon className="h-5 w-5 mx-3 font-bold" /> 
-            Add New Task
-          </button>
           <div className='m-4'><TasksCase tasks={tomorrowTasks} toggleTaskCompletion={toggleTaskCompletion} deleteTask={deleteTask}/></div>
         </div>
 
         <div id='This Week' className='h-auto w-95 border border-gray-300 rounded-lg mx-6 w-[50%]'>
           <h2 className='text-3xl my-5 mx-4'>This Week</h2>
-          <button className="text-black py-2 px-4 rounded  flex justify-start border border-gray-300 mx-4 hover:bg-gray-200 w-[90%]"
-            onClick={() => addNewTask(new Date().toISOString().slice(0, 10))}>
-            <PlusCircleIcon className="h-5 w-5 mx-3 font-bold" /> 
-            Add New Task
-          </button>
           <div className='m-4'><TasksCase tasks={thisWeekTasks} toggleTaskCompletion={toggleTaskCompletion} deleteTask={deleteTask}/></div>
         </div>
       </section>
