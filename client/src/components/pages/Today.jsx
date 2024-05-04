@@ -11,7 +11,7 @@ const Today = () => {
 
   const fetchTasks = async () => {
     try {
-      const response = await axios.get("http://localhost:3002/api/tasks");
+      const response = await axios.get("https://t-tasks.onrender.com/api/tasks");
       setTasks(response.data); 
     } catch (error) {
       console.error("Error fetching tasks:", error);
@@ -29,7 +29,7 @@ const Today = () => {
   
   const toggleTaskCompletion = async (taskId, completed) => {
     try {
-      await axios.put(`http://localhost:3002/api/tasks/${taskId}`, { completed: !completed });
+      await axios.put(`https://t-tasks.onrender.com/api/tasks/${taskId}`, { completed: !completed });
       fetchTasks();
     } catch (error) {
       console.error("Error updating task:", error);
@@ -43,7 +43,7 @@ const Today = () => {
 
   const deleteTask = async (taskId) => {
     try {
-      await axios.delete(`http://localhost:3002/api/tasks/${taskId}`);
+      await axios.delete(`https://t-tasks.onrender.com/api/tasks/${taskId}`);
       fetchTasks();
     } catch (error) {
       console.error("Error deleting task:", error);

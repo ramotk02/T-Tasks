@@ -16,7 +16,7 @@ const TasksCreator = ({ onClose, fetchTasks }) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3002/api/tasks", formData);
+      const response = await axios.post("https://t-tasks.onrender.com/api/tasks", formData);
       console.log("Task created:", response.data);
       setFormData({
         wyhtd: "",

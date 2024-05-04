@@ -14,7 +14,7 @@
 
     const fetchNotes = async () => {
       try {
-        const response = await axios.get('http://localhost:3002/api/notes');
+        const response = await axios.get('https://t-tasks.onrender.com/api/notes');
         setNotes(response.data);
       } catch (error) {
         console.error('Error fetching notes:', error);
@@ -37,7 +37,7 @@
           content: '' 
         };
 
-        const response = await axios.post('http://localhost:3002/api/notes', newNote);
+        const response = await axios.post('https://t-tasks.onrender.com/api/notes', newNote);
         setNotes(prevNotes => [...prevNotes, response.data]);
       } catch (error) {
         console.error('Error creating note:', error);
@@ -46,7 +46,7 @@
 
     const deleteNote = async (id) => {
       try {
-        await axios.delete(`http://localhost:3002/api/notes/${id}`);
+        await axios.delete(`https://t-tasks.onrender.com/api/notes/${id}`);
         setNotes(prevNotes => prevNotes.filter(note => note._id !== id));
         if (selectedNote === id) {
           setSelectedNote(null);
@@ -113,7 +113,7 @@
     const handleNoteContentChange = async (e, noteId) => {
       const newContent = e.target.value;
       try {
-        await axios.put(`http://localhost:3002/api/notes/${noteId}`, { content: newContent });
+        await axios.put(`https://t-tasks.onrender.com/api/notes/${noteId}`, { content: newContent });
         const newNotes = notes.map(existingNote => {
           if (existingNote._id === noteId) {
             return { ...existingNote, content: newContent };

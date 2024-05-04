@@ -15,7 +15,7 @@ const Upcoming = () => {
 
   const fetchTasks = async () => {
     try {
-      const response = await axios.get("http://localhost:3002/api/tasks");
+      const response = await axios.get("https://t-tasks.onrender.com/api/tasks");
       const tasks = response.data;
       const today = new Date();
       const tomorrow = new Date(today);
@@ -43,7 +43,7 @@ const Upcoming = () => {
 
   const toggleTaskCompletion = async (taskId, completed) => {
     try {
-      await axios.put(`http://localhost:3002/api/tasks/${taskId}`, { completed: !completed });
+      await axios.put(`https://t-tasks.onrender.com/api/tasks/${taskId}`, { completed: !completed });
       fetchTasks();
     } catch (error) {
       console.error("Error updating task:", error);
@@ -52,7 +52,7 @@ const Upcoming = () => {
 
   const deleteTask = async (taskId) => {
     try {
-      await axios.delete(`http://localhost:3002/api/tasks/${taskId}`);
+      await axios.delete(`https://t-tasks.onrender.com/api/tasks/${taskId}`);
       fetchTasks();
     } catch (error) {
       console.error("Error deleting task:", error);
@@ -65,7 +65,7 @@ const Upcoming = () => {
       const newTaskDetails = {
         // détails de la nouvelle tâche
       };
-      await axios.post("http://localhost:3002/api/tasks", newTaskDetails);
+      await axios.post("https://t-tasks.onrender.com/api/tasks", newTaskDetails);
       fetchTasks();
     } catch (error) {
       console.error("Error adding new task:", error);
