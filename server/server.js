@@ -9,13 +9,7 @@ const app = express();
 const port = process.env.PORT || 3002;
 
 app.use(express.json());
-app.use(cors(
-  {
-    origin: ["*"],
-    methods: ["GET","POST","PUT","DELETE"],
-    credentials: true,
-  }
-));
+app.use(cors());
 mongoose
   .connect(
     `mongodb+srv://omartakyot:${process.env.MONGODB_PASSWORD}@cluster0.mxrkn5l.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`,
