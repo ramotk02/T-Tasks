@@ -77,11 +77,7 @@ const Upcoming = () => {
       <h2 className='text-7xl my-10'>Upcoming</h2>
       <div id='Today' className='h-auto w-95 border border-gray-300 rounded-lg mx-6 '>
         <h2 className='text-3xl my-5 mx-4'>Today</h2>
-        <button className="text-black py-2 px-4 rounded w-[90%] flex justify-start border border-gray-300 mx-[45px] hover:bg-gray-200"
-          onClick={() => addNewTask(new Date().toISOString().slice(0, 10))}>
-          <PlusCircleIcon className="h-5 w-5 mx-3 font-bold" /> 
-          Add New Task
-        </button>
+       
         <div className='m-4'><TasksCase tasks={todayTasks} toggleTaskCompletion={toggleTaskCompletion} deleteTask={deleteTask}/> </div>
       </div>
 
