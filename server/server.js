@@ -11,7 +11,7 @@ const port = process.env.PORT || 3002;
 app.use(express.json());
 app.use(cors(
   {
-    origin: ["https://t-tasks.vercel.app/"],
+    origin: ["*"],
     methods: ["GET","POST","PUT","DELETE"],
     credentials: true,
   }
