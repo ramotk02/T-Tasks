@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { PlusCircleIcon } from "@heroicons/react/solid";
 import TasksCase from '../TasksCase'; 
 import axios from 'axios';
 
@@ -61,9 +60,7 @@ const Upcoming = () => {
 
   const addNewTask = async (date) => {
     try {
-      // Vous devez remplacer "newTaskDetails" par les détails de la nouvelle tâche
       const newTaskDetails = {
-        // détails de la nouvelle tâche
       };
       await axios.post("https://t-tasks.onrender.com/api/tasks", newTaskDetails);
       fetchTasks();
