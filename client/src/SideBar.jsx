@@ -25,7 +25,7 @@ export default function DefaultSidebar() {
             <ListItemPrefix>
               <CalendarIcon className="h-5 w-5 mx-3" title="Calendar" />
             </ListItemPrefix>
-            <Link to="/" className="sidebar-link">Calendar</Link>
+            <Link to="/" className="sidebar-link">Time</Link>
           </ListItem>
 
           <ListItem>
