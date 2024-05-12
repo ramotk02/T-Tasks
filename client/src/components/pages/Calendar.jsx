@@ -25,32 +25,24 @@ const Calendar = () => {
     }, []);
 
     return (
-        <section>
+        <section style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
             <div id="clock" className="animate-pulse cursor-pointer" onClick={time}>
                 {time}
             </div>
             <h1 className="animate__backInLeft">Welcome, Sir</h1>
             <style>
                 {`
-                @import url('https://fonts.googleapis.com/css?family=Orbitron');
-                * {
-                    color: black;
-                    user-select: none;
-                    // background-color: rgb(241, 225, 6);
-                    font-family: 'Orbitron';
-                }
-
                 h1 {
                     text-align: center;
-                    padding-top: 0px;
+                    padding-top: 20px; /* Modifié pour ajuster l'espace au-dessus du titre */
                     font-size: 30px;
+
                 }
 
                 #clock {
                     font-size: 100px;
-                    text-align: center;
-                    padding-top: 250px;
-                    padding-bottom: 40px;
+                    padding-left: 125px; 
+                
                 }
                 `}
             </style>

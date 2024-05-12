@@ -130,16 +130,8 @@
       <>
         <style>
           {`
-          @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-          
-            body {
-              margin: 0;
-              font-family: 'Montserrat', sans-serif;
-            }
-            
             main {
               width: 100vw;
-              height: 100vh;
               overflow: hidden;
               background-image: 
                 repeating-linear-gradient(
@@ -192,7 +184,6 @@
               height: 100%;
               resize: none;
               padding: 10px;
-              font-family: 'Roboto Mono', monospace;
             }
             
             .note {
@@ -220,7 +211,6 @@
             }
             
             .note span {
-              font-family: cursive;
               font-size: large;
               cursor: pointer;
               color: #000;
@@ -228,11 +218,11 @@
           `}
         </style>
         <main
-          className="p-4 bg-white rounded shadow-lg h-[805px]"
+          className="p-4 bg-white rounded shadow-lg "
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
         >
-          <h2 className="text-7xl my-10" style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '66px', fontWeight: 550 }}> StickyWall</h2>
+          <h2 className="text-7xl my-10" style={{ fontFamily: '', fontSize: '66px', fontWeight: 550 }}> StickyWall</h2>
           <form className="flex items-center">
             <input type="color" value={color} onChange={(e) => setColor(e.target.value)} />
             <button type="button" onClick={createNote}>+</button>

@@ -13,7 +13,7 @@ export default function DefaultSidebar() {
   };
 
   return (
-    <Card className="h-[calc(110vh-2rem)] w-full max-w-[15rem] p-10 shadow-xl shadow-blue-gray-900/10 dark:bg-[#21242a]">
+    <Card className=" w-full max-w-[15rem] p-10 shadow-xl shadow-blue-gray-900/10 dark:bg-[#21242a]">
       <div className="mb-5 p-1 text-xl">
         <Typography variant="h1" color="blue-gray">
           <img src={logo} alt="Logo" className='h-[80px] mx-7' />

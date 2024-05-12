@@ -137,7 +137,6 @@ const TasksCreator = ({ onClose, fetchTasks }) => {
         }
         
         .form__field {
-          font-family: inherit;
           width: 100%;
           border: none;
           border-bottom: 2px solid #9b9b9b;
