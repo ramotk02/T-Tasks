@@ -55,20 +55,6 @@ const StickyWall = () => {
     }
   };
 
-  useEffect(() => {
-    const handleDocumentKeyDown = (event) => {
-      if (event.key === 'Delete' && selectedNote) {
-        deleteNote(selectedNote);
-      }
-    };
-
-    document.addEventListener('keydown', handleDocumentKeyDown);
-
-    return () => {
-      document.removeEventListener('keydown', handleDocumentKeyDown);
-    };
-  }, [selectedNote]);
-
   const bringToFront = (id) => {
     const index = notes.findIndex(note => note._id === id);
     const newNotes = [...notes];
@@ -93,10 +79,13 @@ const StickyWall = () => {
       const { clientX, clientY } = event;
       const newNotes = notes.map(note => {
         if (note._id === selectedNote) {
+          const left = clientX - dragOffset.x;
+          const top = clientY - dragOffset.y;
+          updateNotePosition(selectedNote, left, top);
           return {
             ...note,
-            left: clientX - dragOffset.x,
-            top: clientY - dragOffset.y
+            left,
+            top
           };
         }
         return note;
@@ -132,13 +121,20 @@ const StickyWall = () => {
     }, 500);
 
     return () => clearTimeout(timer);
-  }, [notes]);
+  }, [notes, selectedNote]);
+
+  const updateNotePosition = async (id, left, top) => {
+    try {
+      await axios.put(`http://localhost:3002/api/notes/${id}`, { left, top });
+    } catch (error) {
+      console.error('Error updating note position:', error);
+    }
+  };
 
   return (
     <>
       <style>
         {`
-        
           main {
             width: 100vw;
             height: 100vh;
