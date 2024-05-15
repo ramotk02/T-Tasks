@@ -40,7 +40,7 @@ const Calendar = () => {
                 }
 
                 #clock {
-                    font-size: 100px;
+                    font-size: 80px;
                     padding-left: 100px; 
                 
                 }
