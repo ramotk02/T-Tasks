@@ -20,7 +20,6 @@ const Calendar = () => {
 
         const timer = setInterval(updateTime, 1000);
 
-        // Clean up the timer
         return () => clearInterval(timer);
     }, []);
 
@@ -41,7 +40,7 @@ const Calendar = () => {
 
                 #clock {
                     font-size: 80px;
-                    padding-left: 100px; 
+                    padding-left: 80px; 
                 
                 }
                 `}
