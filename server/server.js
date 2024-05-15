@@ -118,7 +118,7 @@ app.delete("/api/notes/:id", async (req, res) => {
 
 app.put("/api/notes/:id", async (req, res) => {
   const noteId = req.params.id;
-  const { left, top, content } = req.body; // Changed to accept left, top, and content
+  const { left, top, content } = req.body; 
   try {
     const updatedNote = await Note.findByIdAndUpdate(noteId, { left, top, content }, { new: true }); // Updated to accept left, top, and content
     if (!updatedNote) {

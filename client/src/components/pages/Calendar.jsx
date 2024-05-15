@@ -34,14 +34,14 @@ const Calendar = () => {
                 {`
                 h1 {
                     text-align: center;
-                    padding-top: 20px; /* Modifié pour ajuster l'espace au-dessus du titre */
+                    padding-top: 20px; 
                     font-size: 30px;
 
                 }
 
                 #clock {
                     font-size: 100px;
-                    padding-left: 125px; 
+                    padding-left: 100px; 
                 
                 }
                 `}
