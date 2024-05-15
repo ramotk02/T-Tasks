@@ -31,18 +31,18 @@ const Calendar = () => {
             <h1 className="animate__backInLeft">Welcome, Sir</h1>
             <style>
                 {`
-                h1 {
-                    text-align: center;
-                    padding-top: 20px; 
-                    font-size: 30px;
-
-                }
-
-                #clock {
-                    font-size: 85px;
-                    padding-left: 80px; 
-                
-                }
+               h1 {
+                text-align: center;
+                padding-top: 20px;
+                font-size: 30px;
+            }
+            
+            #clock {
+                font-size: 85px;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
                 `}
             </style>
         </section>
