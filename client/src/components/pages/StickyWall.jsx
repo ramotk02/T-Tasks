@@ -13,7 +13,7 @@ const StickyWall = () => {
 
   const fetchNotes = async () => {
     try {
-      const response = await axios.get('http://localhost:3002/api/notes');
+      const response = await axios.get('https://t-tasks.onrender.com/api/notes');
       setNotes(response.data);
     } catch (error) {
       console.error('Error fetching notes:', error);
@@ -36,7 +36,7 @@ const StickyWall = () => {
         content: '' 
       };
 
-      const response = await axios.post('http://localhost:3002/api/notes', newNote);
+      const response = await axios.post('https://t-tasks.onrender.com/api/notes', newNote);
       setNotes(prevNotes => [...prevNotes, response.data]);
     } catch (error) {
       console.error('Error creating note:', error);
@@ -45,7 +45,7 @@ const StickyWall = () => {
 
   const deleteNote = async (id) => {
     try {
-      await axios.delete(`http://localhost:3002/api/notes/${id}`);
+      await axios.delete(`https://t-tasks.onrender.com/api/notes/${id}`);
       setNotes(prevNotes => prevNotes.filter(note => note._id !== id));
       if (selectedNote === id) {
         setSelectedNote(null);
@@ -113,7 +113,7 @@ const StickyWall = () => {
     const timer = setTimeout(async () => {
       if (selectedNote) {
         try {
-          await axios.put(`http://localhost:3002/api/notes/${selectedNote}`, { content: notes.find(note => note._id === selectedNote).content });
+          await axios.put(`https://t-tasks.onrender.com/api/notes/${selectedNote}`, { content: notes.find(note => note._id === selectedNote).content });
         } catch (error) {
           console.error('Error updating note:', error);
         }
@@ -125,7 +125,7 @@ const StickyWall = () => {
 
   const updateNotePosition = async (id, left, top) => {
     try {
-      await axios.put(`http://localhost:3002/api/notes/${id}`, { left, top });
+      await axios.put(`https://t-tasks.onrender.com/api/notes/${id}`, { left, top });
     } catch (error) {
       console.error('Error updating note position:', error);
     }
