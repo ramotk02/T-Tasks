@@ -1,3 +1,4 @@
+// StickyWall.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -77,11 +78,11 @@ const StickyWall = () => {
   const handleMouseMove = (event) => {
     if (selectedNote) {
       const { clientX, clientY } = event;
-      const newNotes = notes.map(note => {
+      const updatedNotes = notes.map(note => {
         if (note._id === selectedNote) {
           const left = clientX - dragOffset.x;
           const top = clientY - dragOffset.y;
-          updateNotePosition(selectedNote, left, top);
+          updateNotePosition(selectedNote, left, top); // Call API to update position
           return {
             ...note,
             left,
@@ -90,7 +91,7 @@ const StickyWall = () => {
         }
         return note;
       });
-      setNotes(newNotes);
+      setNotes(updatedNotes);
     }
   };
 
@@ -98,7 +99,7 @@ const StickyWall = () => {
     setSelectedNote(null);
   };
 
-  const handleNoteContentChange = (e, noteId) => {
+  const handleNoteContentChange = async (e, noteId) => {
     const newContent = e.target.value;
     const newNotes = notes.map(existingNote => {
       if (existingNote._id === noteId) {
@@ -107,6 +108,11 @@ const StickyWall = () => {
       return existingNote;
     });
     setNotes(newNotes);
+    try {
+      await axios.put(`https://t-tasks.onrender.com/api/notes/${noteId}`, { content: newContent }); // Call API to update content
+    } catch (error) {
+      console.error('Error updating note content:', error);
+    }
   };
 
   useEffect(() => {
@@ -125,7 +131,7 @@ const StickyWall = () => {
 
   const updateNotePosition = async (id, left, top) => {
     try {
-      await axios.put(`https://t-tasks.onrender.com/api/notes/${id}`, { left, top });
+      await axios.put(`https://t-tasks.onrender.com/api/notes/${id}`, { left, top }); // Call API to update position
     } catch (error) {
       console.error('Error updating note position:', error);
     }
@@ -272,3 +278,4 @@ const StickyWall = () => {
 };
 
 export default StickyWall;
+

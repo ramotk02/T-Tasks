@@ -1,3 +1,4 @@
+// Models/Note.js
 const mongoose = require('mongoose');
 
 const noteSchema = new mongoose.Schema({
