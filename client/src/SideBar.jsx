@@ -31,6 +31,18 @@ export default function DefaultSidebar() {
         <div className='flex flex-col py-5'>
           <ListItem>
             <ListItemPrefix>
+              <button onClick={toggleSidebar}>
+                {sidebarCollapsed ? (
+                  <ChevronLeftIcon className="h-5 w-5 mx-3" title="Expand Sidebar" />
+                ) : (
+                  <ChevronDoubleRightIcon className="h-5 w-5 mx-3" title="Collapse Sidebar" />
+                )}
+              </button>
+            </ListItemPrefix>
+          </ListItem>
+
+          <ListItem>
+            <ListItemPrefix>
               <Link to="/" className={`sidebar-link ${darkMode ? 'text-white' : ''}`}>
                 <CalendarIcon className={`h-5 w-5 mx-3`} title="Calendar" />
               </Link>
