@@ -1,4 +1,3 @@
-// StickyWall.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -82,7 +81,7 @@ const StickyWall = () => {
         if (note._id === selectedNote) {
           const left = clientX - dragOffset.x;
           const top = clientY - dragOffset.y;
-          updateNotePosition(selectedNote, left, top); // Call API to update position
+          updateNotePosition(selectedNote, left, top); 
           return {
             ...note,
             left,
@@ -131,7 +130,7 @@ const StickyWall = () => {
 
   const updateNotePosition = async (id, left, top) => {
     try {
-      await axios.put(`https://t-tasks.onrender.com/api/notes/${id}`, { left, top }); // Call API to update position
+      await axios.put(`https://t-tasks.onrender.com/api/notes/${id}`, { left, top }); 
     } catch (error) {
       console.error('Error updating note position:', error);
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import grandeImage from '../../assets/README.jpeg'; // Importez votre image
+import grandeImage from '../../assets/README.jpeg'; 
 
 const NoPage = () => {
   return (

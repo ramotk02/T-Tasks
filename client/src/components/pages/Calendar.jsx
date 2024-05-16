@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const Calendar = () => {
     const [time, setTime] = useState('');
+    const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
     useEffect(() => {
         const updateTime = () => {
@@ -25,23 +26,20 @@ const Calendar = () => {
 
     return (
         <section style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
-            <div id="clock" className="animate-pulse cursor-pointer" onClick={time}>
+            <div id="clock" className={`animate-pulse cursor-pointer ${sidebarCollapsed ? 'text-center' : 'text-left'}`} onClick={time}>
                 {time}
             </div>
-            <h1 className="animate__backInLeft">Welcome, Sir</h1>
+            <h1 className={`animate__backInLeft ${sidebarCollapsed ? 'text-center' :'px-[500px]'}`}>Welcome, Sir</h1>
             <style>
                 {`
-                h1 {
-                    text-align: center;
+                h1, #clock {
                     padding-top: 20px; 
                     font-size: 30px;
-
                 }
 
                 #clock {
                     font-size: 85px;
                     padding-left: 95px; 
-                
                 }
                 `}
             </style>
