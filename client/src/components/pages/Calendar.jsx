@@ -29,7 +29,7 @@ const Calendar = () => {
             <div id="clock" className={`animate-pulse cursor-pointer ${sidebarCollapsed ? 'text-center' : 'text-left'}`} onClick={time}>
                 {time}
             </div>
-            <h1 className={`animate__backInLeft ${sidebarCollapsed ? 'text-center' :'px-[500px]'}`}>Welcome, Sir</h1>
+            <h1 className={`animate__backInLeft ${sidebarCollapsed ? 'text-center' :'px-[500px]'}`}>Welcome</h1>
             <style>
                 {`
                 h1, #clock {
