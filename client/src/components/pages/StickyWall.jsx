@@ -142,7 +142,6 @@ const StickyWall = () => {
         {`
           main {
             width: 100vw;
-            overflow: hidden;
             background-image: 
               repeating-linear-gradient(
                 to right,
@@ -228,7 +227,7 @@ const StickyWall = () => {
         `}
       </style>
       <main
-        className="p-4 bg-white rounded shadow-lg"
+        className="p-4"
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
       >

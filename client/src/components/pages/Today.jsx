@@ -12,7 +12,7 @@ const Today = () => {
   const fetchTasks = async () => {
     try {
       const response = await axios.get("https://t-tasks.onrender.com/api/tasks");
-      setTasks(response.data); 
+      setTasks(response.data);
     } catch (error) {
       console.error("Error fetching tasks:", error);
     }
@@ -26,7 +26,7 @@ const Today = () => {
     setShowCreateTask(!showCreateTask);
     setTaskSectionWidth(showCreateTask ? "w-full" : "w-3/4");
   };
-  
+
   const toggleTaskCompletion = async (taskId, completed) => {
     try {
       await axios.put(`https://t-tasks.onrender.com/api/tasks/${taskId}`, { completed: !completed });
@@ -51,13 +51,15 @@ const Today = () => {
   };
 
   return (
-    <section className="w-full mx-8 flex justify-between">
-      
-      <section className={taskSectionWidth}>
+    <section className="w-full mx-8 flex justify-between h-screen overflow-hidden">
+      <section className={`${taskSectionWidth} h-full overflow-auto`}>
         <h2 className="text-7xl my-10">Tasks</h2>
         <div id="Today" className="h-auto w-full">
-          <button onClick={toggleCreateTask} className="text-black py-2 px-4 rounded w-full flex justify-start border border-gray-300 hover:bg-gray-200">
-            <PlusCircleIcon className="h-5 w-5 mx-3 font-bold" /> 
+          <button
+            onClick={toggleCreateTask}
+            className="text-black py-2 px-4 rounded w-full flex justify-start border border-gray-300 hover:bg-gray-200"
+          >
+            <PlusCircleIcon className="h-5 w-5 mx-3 font-bold" />
             Add New Task
           </button>
           <div className="m-4">
