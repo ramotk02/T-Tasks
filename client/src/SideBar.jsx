@@ -18,7 +18,7 @@ export default function DefaultSidebar() {
   };
 
   return (
-    <Card className={`w-full max-w-[15rem] p-10 shadow-xl shadow-blue-gray-900/10 h-[88vh] rounded-md dark:bg-[#31353E] ${sidebarCollapsed ? 'max-w-[4rem] p-' : ''}`}>
+    <Card className={`w-full max-w-[15rem] p-10 shadow-xl shadow-blue-gray-900/10 h-[88vh] rounded-md bg-white dark:bg-[#31353E] ${sidebarCollapsed ? 'max-w-[4rem] p-' : ''}`}>
       <div className="mb-5 p-9 text-xl flex"> 
         <Typography variant="h1" color="blue-gray">
           <img 
